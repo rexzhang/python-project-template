@@ -10,6 +10,7 @@ from .core import (  # noqa: F401
     PyPIPackageProject,
 )
 
+__name__ = 'PyPIPackageProject'
 __version__ = '0.x.0'
 
 __author__ = '__AUTHOR__'
