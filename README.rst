@@ -1,2 +1,0 @@
-PyPI Package Project Template
-=============================
