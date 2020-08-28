@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # coding=utf-8
 
+# Template: https://github.com/rexzhang/pypi-package-project-template/blob/master/setup.py
 
 # Always prefer setuptools over distutils
 from setuptools import setup, find_packages
