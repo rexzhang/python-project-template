@@ -11,23 +11,26 @@ from setuptools import setup, find_packages
 
 # To use a consistent encoding
 from codecs import open
-from os import path
+from pathlib import Path
 
 import pypi_package_project as module
 
-here = path.abspath(path.dirname(__file__))
+root_path = Path(__file__).parent
+requirements_path = root_path.joinpath('requirements')
 
 # Get the long description from the README file
-with open(path.join(here, 'README.md'), encoding='utf-8') as f:
+with open(root_path.joinpath('README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 
 # Get install_requires from requirements.txt
 def _read_requires_from_requirements_txt(
-    base_path: str, filename: str, ignore_base: bool = False
+    base_path: Path, filename: str, ignore_base: bool = False
 ) -> List[str]:
     _requires = []
-    with open(path.join(base_path, filename), encoding='utf-8') as req_f:
+    with open(
+        base_path.joinpath(filename).as_posix(), encoding='utf-8'
+    ) as req_f:
         lines = req_f.readlines()
         for line in lines:
             if line == '\n' or line == '' or line[0] == '#':
@@ -52,10 +55,10 @@ def _read_requires_from_requirements_txt(
 
 
 install_requires = _read_requires_from_requirements_txt(
-    base_path=here, filename='requirements/base.txt'
+    base_path=requirements_path, filename='base.txt'
 )
 extras_require_dev = _read_requires_from_requirements_txt(
-    base_path=here, filename='requirements/dev.txt'
+    base_path=requirements_path, filename='dev.txt'
 )
 
 # Setup
