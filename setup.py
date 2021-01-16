@@ -1,7 +1,10 @@
 #!/usr/bin/env python
 # coding=utf-8
 
-# Template: https://github.com/rexzhang/pypi-package-project-template/blob/master/setup.py
+# Template:
+# https://github.com/rexzhang/pypi-package-project-template/blob/master/setup.py
+
+from typing import List
 
 # Always prefer setuptools over distutils
 from setuptools import setup, find_packages
@@ -20,8 +23,10 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 
 # Get install_requires from requirements.txt
-def _read_install_requires_from_requirements_txt(base_path, filename):
-    _install_requires = []
+def _read_requires_from_requirements_txt(
+    base_path: str, filename: str, ignore_base: bool = False
+) -> List[str]:
+    _requires = []
     with open(path.join(base_path, filename), encoding='utf-8') as req_f:
         lines = req_f.readlines()
         for line in lines:
@@ -30,18 +35,27 @@ def _read_install_requires_from_requirements_txt(base_path, filename):
 
             words = line.rstrip('\n').split(' ')
             if words[0] == '-r':
-                _install_requires.extend(_read_install_requires_from_requirements_txt(
-                    base_path=base_path, filename=words[1]
-                ))
+                if ignore_base and words[1] == 'base.txt':
+                    continue
+
+                else:
+                    _requires.extend(
+                        _read_requires_from_requirements_txt(
+                            base_path=base_path, filename=words[1]
+                        )
+                    )
 
             else:
-                _install_requires.append(words[0])
+                _requires.append(words[0])
 
-    return _install_requires
+    return _requires
 
 
-install_requires = _read_install_requires_from_requirements_txt(
+install_requires = _read_requires_from_requirements_txt(
     base_path=here, filename='requirements/base.txt'
+)
+extras_require_dev = _read_requires_from_requirements_txt(
+    base_path=here, filename='requirements/dev.txt'
 )
 
 # Setup
@@ -178,7 +192,7 @@ setup(
     # Similar to `install_requires` above, these must be valid existing
     # projects.
     extras_require={  # Optional
-        'dev': ['check-manifest'],
+        'dev': extras_require_dev,
         'test': ['coverage'],
     },
 
