@@ -57,9 +57,9 @@ def _read_requires_from_requirements_txt(
 install_requires = _read_requires_from_requirements_txt(
     base_path=requirements_path, filename='base.txt'
 )
-extras_require_dev = _read_requires_from_requirements_txt(
+extras_require_dev = list(set(_read_requires_from_requirements_txt(
     base_path=requirements_path, filename='dev.txt'
-)
+)))
 
 # Setup
 setup(
