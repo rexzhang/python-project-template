@@ -3,7 +3,7 @@
 
 
 """
-ASGI Middleware Static File
+__DESCRIPTION__
 """
 
 from .core import (  # noqa: F401
