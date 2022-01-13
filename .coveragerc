@@ -1,0 +1,6 @@
+[run]
+source = pypi_package_project
+omit = setup.py,examples.py,conftest.py,test_*,venv*
+
+[html]
+directory = htmlcov
