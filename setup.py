@@ -19,7 +19,7 @@ root_path = Path(__file__).parent
 requirements_path = root_path.joinpath("requirements")
 
 # Get the long description from the README file
-with open(root_path.joinpath("README.md"), encoding="utf-8") as f:
+with open(root_path.joinpath("README.md").as_posix(), encoding="utf-8") as f:
     long_description = f.read()
 
 
