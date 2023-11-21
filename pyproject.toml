@@ -1,12 +1,59 @@
 [build-system]
 # These are the assumed default build requirements from pip:
 # https://pip.pypa.io/en/stable/reference/pip/#pep-517-and-518-support
-requires = ["setuptools>=40.8.0", "wheel"]
+requires = [
+    "setuptools>=40.8.0",
+    "wheel",
+]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "PYTHON_PROJECT_TEMPLATE"
+description = "__DESCRIPTION__"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "__LICENCE__" }
+authors = [
+    { name = "__AUTHOR__" },
+    { email = "__AUTHOR@EMAIL__" },
+]
+keywords = [
+    "webdav",
+    "asgi",
+    "asyncio",
+]
+classifiers = [
+    "Development Status :: 1 - Alpha",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+dynamic = [
+    "version",
+    "dependencies",
+    "optional-dependencies",
+]
+
+[project.urls]
+homepage = "https://__PROJECT_URL__"
+documentation = "https://__PROJECT_URL__"
+repository = "https://__PROJECT_URL__"
+changelog = "https://__PROJECT_URL__/CHANGELOG.md"
+
+[project.scripts]
+python-project = "python_project.cli:main"
+
+[tool.setuptools.dynamic]
+version = { attr = "python_project.__version__" }
+dependencies = { file = "requirements.d/basic.txt" }
+
+[tool.setuptools.dynamic.optional-dependencies]
+full = { file = "requirements.d/full.txt" }
 
 [tool.pytest.ini_options]
 pythonpath = "."
-addopts = "--cov=pypi_package_project --cov-report html --ignore=tests/by_hand"
+addopts = "--cov=python_project --cov-report html --ignore=tests/by_hand"
 asyncio_mode = "auto"
 
 [tool.isort]
