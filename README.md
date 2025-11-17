@@ -5,11 +5,21 @@
 [![PyPI - Version](https://img.shields.io/pypi/v/example)](https://pypi.org/project/example/)
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/django-light-auth)](https://pypi.org/project/example/)
 
+## Check with pytest
+
+### GihHub's `Actions secrets`
+
+setup: `CODECOV_TOKEN`
+
 ## Release Docker
 
-### GihHub's `Actions secrets and variables`
+### GihHub's `Actions variables`
 
-setup: `DOCKERHUB_PROJECT` and `DOCKERHUB_USERNAME` and `DOCKERHUB_TOKEN`
+setup: `DOCKERHUB_REPOSITORY`
+
+### GihHub's `Actions secrets`
+
+setup: `DOCKERHUB_USERNAME` and `DOCKERHUB_TOKEN`
 
 ### Ref
 
