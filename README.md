@@ -15,7 +15,7 @@ setup: `CODECOV_TOKEN`
 
 ### GihHub's `Actions variables`
 
-setup: `DOCKERHUB_REPOSITORY`
+setup: `DOCKERHUB_REPOSITORY`,  eg: `ray1ex/asgi-webdav`
 
 ### GihHub's `Actions secrets`
 
