@@ -2,4 +2,6 @@
 -r pypi.txt
 -r test.txt
 
+pip
+
 # extend 3rd package
