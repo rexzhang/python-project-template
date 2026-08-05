@@ -15,7 +15,7 @@ setup: `CODECOV_TOKEN`
 
 ### GihHub's `Actions variables`
 
-setup: `DOCKERHUB_REPOSITORY`,  eg: `ray1ex/asgi-webdav`
+setup: `DOCKERHUB_REPOSITORY`, eg: `ray1ex/asgi-webdav`
 
 ### GihHub's `Actions secrets`
 
@@ -29,8 +29,4 @@ setup: `DOCKERHUB_USERNAME` and `DOCKERHUB_TOKEN`
 
 ## Release PyPI
 
-### GihHub's `Environments`
-
-Create a new environment: `pypi`
-
-setup: `PYPI_PROJECT_URL`
+In `pypi.org`'s `Trusted Publisher Management`, `Add a new publisher` `Github` without `Environment name`
